@@ -1,0 +1,15 @@
+baseURL      = "https://example.com/"
+languageCode = "en-us"
+title        = "My Hugo Site"
+
+disableKinds = ["taxonomy", "term", "section"]
+
+[versions]
+    [versions.v1]
+
+[[module.mounts]]
+    source = 'content'
+    target = 'content'
+    [module.mounts.sites]
+        [module.mounts.sites.matrix]
+            versions = '>= v1'
