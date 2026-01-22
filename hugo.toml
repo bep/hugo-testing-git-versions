@@ -1,21 +1,42 @@
-baseURL      = "https://example.com/"
-languageCode = "en-us"
-title        = "My Hugo Site"
+baseURL                       = "https://example.com/"
+languageCode                  = "en-us"
+title                         = "My Hugo Site"
+defaultContentVersion         = "v2"
+defaultContentVersionInSubdir = true
 
 disableKinds = ["taxonomy", "term", "section"]
 
+[[menus.main]]
+    name    = 'Home'
+    pageRef = '/'
+    weight  = 10
+
+[[menus.main]]
+    name    = 'Documentation'
+    pageRef = '/docs'
+    weight  = 20
+
+[[menus.main]]
+    name    = 'Functions'
+    pageRef = '/docs/functions'
+    weight  = 30
+
 [versions]
     [versions.v1]
+    [versions.v2]
 
 [module]
+    [[module.mounts]]
+        source = 'content'
+        target = 'content'
+        [module.mounts.sites.matrix]
+            versions = '>= v2.0.0'
     [[module.imports]]
-        disable       = false
-        ignoreConfig  = false
-        ignoreImports = false
-        path          = 'github.com/bep/hugo-testing-git-versions'
-        version       = 'bf9db097d1b46a118c691f5d1dcd03a8cfbdb7d9'
+        ignoreConfig = true
+        path         = 'github.com/bep/hugo-testing-git-versions'
+        version      = '<v2.0.0'
         [[module.imports.mounts]]
             source = 'content'
             target = 'content'
             [module.imports.mounts.sites.matrix]
-                versions = '>= v1'
+                versions = '< v2.0.0'
