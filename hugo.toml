@@ -7,9 +7,15 @@ disableKinds = ["taxonomy", "term", "section"]
 [versions]
     [versions.v1]
 
-[[module.mounts]]
-    source = 'content'
-    target = 'content'
-    [module.mounts.sites]
-        [module.mounts.sites.matrix]
-            versions = '>= v1'
+[module]
+    [[module.imports]]
+        disable       = false
+        ignoreConfig  = false
+        ignoreImports = false
+        path          = 'github.com/bep/hugo-testing-git-versions'
+        version       = 'bf9db097d1b46a118c691f5d1dcd03a8cfbdb7d9'
+        [[module.imports.mounts]]
+            source = 'content'
+            target = 'content'
+            [module.imports.mounts.sites.matrix]
+                versions = '>= v1'
