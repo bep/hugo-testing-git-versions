@@ -87,9 +87,25 @@
   </head>
   <body>
     <header>
-      <h1><a href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a></h1>
+      <h1>
+        <a href="{{ site.Home.RelPermalink }}"
+          >{{ site.Title }} {{ site.Version.Name }}</a
+        >
+      </h1>
       {{ partial "menu.html" . }}
       {{ partial "version-switcher.html" . }}
+      <h3>Hugo Modules Imported</h3>
+      <ul>
+        {{ range hugo.Deps }}
+          {{ if eq .Path "project" }}
+            {{ continue }}
+          {{ end }}
+          <li>
+            {{ .Path }} -
+            {{ .Version | strings.TrimSuffix "+incompatible" }}
+          </li>
+        {{ end }}
+      </ul>
       <hr />
     </header>
     <main>

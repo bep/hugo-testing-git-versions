@@ -24,19 +24,54 @@ disableKinds = ["taxonomy", "term", "section"]
 [versions]
     [versions.v1]
     [versions.v2]
+    [versions.v3]
+    [versions.dev]
+        weight = 10 # Pull dev to the front
 
 [module]
     [[module.mounts]]
         source = 'content'
         target = 'content'
         [module.mounts.sites.matrix]
-            versions = '>= v2.0.0'
+            # In this example, this is the unreleased content. i.e. the content in the default branch.
+            versions = 'dev'
     [[module.imports]]
+        # We import ourself again, but this time getting the v1 content.
+        # Prevent a logical loop by ignoring the config (even if Hugo has safe guards against that).
         ignoreConfig = true
         path         = 'github.com/bep/hugo-testing-git-versions'
-        version      = '<v2.0.0'
+        # This is a Go Modules version query, see  https://go.dev/ref/mod#version-queries
+        # It will only match one version, but doing it like this automatically picks up latest v1.x.y release.
+        version = '<v2.0.0'
         [[module.imports.mounts]]
             source = 'content'
             target = 'content'
             [module.imports.mounts.sites.matrix]
-                versions = '< v2.0.0'
+                # This is a Hugo dimension query.
+                # This can be either a string or a list of strings.
+                # If prefixed with an operator, the logical operation is AND and it short-circuits on the first match.
+                # If not prefixed with an operator, the logical operation is OR.
+                # If not prefixed with an operator or the operator is "! ", it is treated as a Glob expression. See https://github.com/gobwas/glob for the library used.
+                # The operators are: !,=, !=, <, <=, >, >= followed by a single space.
+                # "! " operator is reserved for Glob expressions.
+                # The other operators must be followed by a valid value for the given dimension (for versions Hugo consider semantic equality when finding the value, 
+                # so e.g "< v3.0.0" would match v1 and v2).
+                versions = 'v1'
+    [[module.imports]]
+        ignoreConfig = true
+        path         = 'github.com/bep/hugo-testing-git-versions'
+        version      = '<v3.0.0'
+        [[module.imports.mounts]]
+            source = 'content'
+            target = 'content'
+            [module.imports.mounts.sites.matrix]
+                versions = 'v2'
+    [[module.imports]]
+        ignoreConfig = true
+        path         = 'github.com/bep/hugo-testing-git-versions'
+        version      = '<v4.0.0'
+        [[module.imports.mounts]]
+            source = 'content'
+            target = 'content'
+            [module.imports.mounts.sites.matrix]
+                versions = 'v3'

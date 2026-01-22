@@ -6,7 +6,6 @@ details = 'https://discourse.gohugo.io/t/56516'
 description = "Git versions"
 +++
 
-
 v1
 
 - Added /docs/functions/average
