@@ -7,6 +7,10 @@ enableGitInfo                 = true
 
 disableKinds = ["taxonomy", "term", "section"]
 
+[caches.modulegitinfo]
+    dir    = ':cacheDir/modules'
+    maxage = '24h'
+
 [[menus.main]]
     name    = 'Home'
     pageRef = '/'
