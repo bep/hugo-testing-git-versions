@@ -89,11 +89,19 @@
     <header>
       <h1>
         <a href="{{ site.Home.RelPermalink }}"
-          >{{ site.Title }} {{ site.Version.Name }}</a
+          >{{ site.Title }} asdf {{ site.Version.Name }}</a
         >
       </h1>
       {{ partial "menu.html" . }}
       {{ partial "version-switcher.html" . }}
+
+
+      <hr />
+    </header>
+    <main>
+      {{ block "main" . }}{{ end }}
+
+
       <h3>Hugo Modules Imported</h3>
       <ul>
         {{ range hugo.Deps }}
@@ -106,10 +114,6 @@
           </li>
         {{ end }}
       </ul>
-      <hr />
-    </header>
-    <main>
-      {{ block "main" . }}{{ end }}
     </main>
   </body>
 </html>

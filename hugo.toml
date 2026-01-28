@@ -3,6 +3,7 @@ languageCode                  = "en-us"
 title                         = "My Hugo Site"
 defaultContentVersion         = "v2"
 defaultContentVersionInSubdir = true
+enableGitInfo                 = true
 
 disableKinds = ["taxonomy", "term", "section"]
 
@@ -37,7 +38,7 @@ disableKinds = ["taxonomy", "term", "section"]
             versions = 'dev'
     [[module.imports]]
         # We import ourself again, but this time getting the v1 content.
-        # Prevent a logical loop by ignoring the config (even if Hugo has safe guards against that).
+        # Prevent a loop by ignoring the config.
         ignoreConfig = true
         path         = 'github.com/bep/hugo-testing-git-versions'
         # This is a Go Modules version query, see  https://go.dev/ref/mod#version-queries

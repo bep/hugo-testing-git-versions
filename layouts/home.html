@@ -6,7 +6,12 @@
         <a href="{{ .RelPermalink }}"
           >{{ .Title }} -
           {{ with .File }}
-            {{ .Filename | strings.TrimPrefix hugo.WorkingDir }}
+            {{ index (split .Filename "@") 1 }}
+          {{ end }}
+          - Git
+          {{ with .GitInfo }}
+            {{ .AbbreviatedHash }} / {{ .Subject }} /
+            {{ len .Ancestors }}
           {{ end }}</a
         >
       </li>
