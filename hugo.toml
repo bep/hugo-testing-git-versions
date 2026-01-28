@@ -52,7 +52,7 @@ disableKinds = ["taxonomy", "term", "section"]
                 # If prefixed with an operator, the logical operation is AND and it short-circuits on the first match.
                 # If not prefixed with an operator, the logical operation is OR.
                 # If not prefixed with an operator or the operator is "! ", it is treated as a Glob expression. See https://github.com/gobwas/glob for the library used.
-                # The operators are: !,=, !=, <, <=, >, >= followed by a single space.
+                # The operators are: !,==, !=, <, <=, >, >= followed by a single space.
                 # "! " operator is reserved for Glob expressions.
                 # The other operators must be followed by a valid value for the given dimension (for versions Hugo consider semantic equality when finding the value, 
                 # so e.g "< v3.0.0" would match v1 and v2).
