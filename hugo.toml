@@ -7,7 +7,12 @@ enableGitInfo                 = true
 
 disableKinds = ["taxonomy", "term", "section"]
 
+# Set these cache values to something low to make it easier to test the versioning features.
 [caches.modulegitinfo]
+    dir    = ':cacheDir/modules'
+    maxage = '2m'
+
+[caches.modulequeries]
     dir    = ':cacheDir/modules'
     maxage = '2m'
 

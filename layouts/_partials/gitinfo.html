@@ -1,0 +1,22 @@
+<h2>Git Info</h2>
+<div class="gitinfo">
+  <h3><code>{{ .AbbreviatedHash }}</code> &mdash; {{ .Subject }}</h3>
+  {{ with .Body }}<pre>{{ . }}</pre>{{ end }}
+  {{ with .Ancestors | first 5 }}
+    <h4>Recent Ancestors</h4>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Hash</th>
+        <th>Subject</th>
+      </tr>
+      {{ range . }}
+        <tr>
+          <td>{{ .CommitDate.Format "2006-01-02" }}</td>
+          <td><code>{{ .AbbreviatedHash }}</code></td>
+          <td>{{ .Subject }}</td>
+        </tr>
+      {{ end }}
+    </table>
+  {{ end }}
+</div>

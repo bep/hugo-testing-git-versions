@@ -6,14 +6,9 @@
         <a href="{{ .RelPermalink }}"
           >{{ .Title }} -
           {{ with .File }}
-            {{ index (split .Filename "@") 1 }}
+            {{ .Filename }}
           {{ end }}
-          - Git
-          {{ with .GitInfo }}
-            {{ .AbbreviatedHash }} / {{ .Subject }} /
-            {{ len .Ancestors }}
-          {{ end }}</a
-        >
+        </a>
       </li>
     {{ end }}
   </ul>
