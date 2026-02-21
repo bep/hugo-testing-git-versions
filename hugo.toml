@@ -5,7 +5,7 @@ defaultContentVersion         = "v2"
 defaultContentVersionInSubdir = true
 enableGitInfo                 = true
 
-disableKinds = ["taxonomy", "term", "section"]
+disableKinds = ["taxonomy", "term"]
 
 # Set these cache values to something low to make it easier to test the versioning features.
 [caches.modulegitinfo]
