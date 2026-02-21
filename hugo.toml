@@ -9,7 +9,7 @@ disableKinds = ["taxonomy", "term", "section"]
 
 [caches.modulegitinfo]
     dir    = ':cacheDir/modules'
-    maxage = '24h'
+    maxage = '2m'
 
 [[menus.main]]
     name    = 'Home'
